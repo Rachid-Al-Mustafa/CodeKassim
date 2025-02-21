@@ -1,15 +1,10 @@
+// src/App.tsx
+import "./App.css";
+import AppRoutes from "./Routes/Routes";
 
-import './App.css'
-import { NewProductsPage } from './pages/NewProductPage'
 
 function App() {
-
-  return (
-    <div>
-     <NewProductsPage/>
-   
-    </div>
-  )
+  return <AppRoutes />;
 }
 
-export default App
+export default App;
