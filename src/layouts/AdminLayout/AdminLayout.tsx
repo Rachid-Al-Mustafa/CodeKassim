@@ -1,32 +1,32 @@
-
-import React, { useState, useLayoutEffect } from "react";
-
-import Sider from "./Sider/Sider";
+// src/layouts/AdminLayout.tsx
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { Layout } from "antd";
+import CustomSider from "./Sider/Sider";
 
-const LOCAL_STORAGE_SIDEBAR_COLLAPSE_KEY = "sidebar-collapsed";
 
 export default function AdminLayout() {
-  const [isSliderCollapsed, setIsSliderCollapsed] = useState<boolean>(
-    !!localStorage.getItem(LOCAL_STORAGE_SIDEBAR_COLLAPSE_KEY)
-  );
+  const [collapsed, setCollapsed] = useState(false);
 
-
-  const contentWidthClass = isSliderCollapsed
-    ? `w-[calc(100%-80px)]`
-    : `w-[calc(100%-280px)]`;
-
- 
   return (
-    <div className="flex w-full h-full">
-      <Sider />
-      <div className={`h-full ${contentWidthClass}`}>
-        <div className="flex h-full">
-          <div className="p-8 overflow-auto w-full">
-            <Outlet />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Layout className="h-screen">
+      <CustomSider collapsed={collapsed} onCollapse={setCollapsed} />
+
+      <Layout
+        style={{
+          backgroundColor: "#fff",
+        }}
+      >
+        <Layout.Content
+          style={{
+            padding: "24px",
+            backgroundColor: "#fff",
+            overflowY: "auto",
+          }}
+        >
+          <Outlet />
+        </Layout.Content>
+      </Layout>
+    </Layout>
   );
 }

@@ -1,14 +1,83 @@
-// Sider/Sider.tsx
+// src/components/Sider/Sider.tsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { Layout, Menu } from "antd";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  DashboardOutlined,
+  ShoppingOutlined,
+} from "@ant-design/icons";
+import { ROUTES } from "../../../constants/routes";
 
-export default function Sider() {
+const { Sider } = Layout;
+
+const ROUTE_ITEMS = [
+  { label: "Overview", route: `${ROUTES.DASHBOARD}/${ROUTES.OVERVIEW}`, icon: <DashboardOutlined /> },
+  { label: "Category", route: `${ROUTES.DASHBOARD}/${ROUTES.CATIGORIES}`, icon: <ShoppingOutlined /> },
+];
+
+type Props = {
+  collapsed: boolean;
+  onCollapse: (collapsed: boolean) => void;
+};
+
+export default function CustomSider({ collapsed, onCollapse }: Props) {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  // Normalize pathname to match route keys
+  const normalizedPath = pathname.split("/").slice(1, 3).join("/");
+
+  const handleClick = ({ key }: { key: string }) => {
+    navigate(`/${key.replace(/^\//, "")}`); 
+  };
+
   return (
-    <div className="bg-gray-800 text-white h-full p-4 w-20">
-      <nav className="flex flex-col space-y-4">
-        <Link to="/">🏠</Link>
-        <Link to="/settings">⚙️</Link>
-      </nav>
-    </div>
+    <Sider
+      collapsible
+      collapsed={collapsed}
+      onCollapse={onCollapse}
+      breakpoint="md"
+      theme="light"
+      width={220}
+      collapsedWidth={70}
+      style={{
+        backgroundColor: "#fff",
+        borderRight: "1px solid #f0f0f0",
+      }}
+    >
+      {/* Collapse/Expand Button */}
+      <div className="flex justify-center items-center py-4">
+        {collapsed ? (
+          <MenuUnfoldOutlined
+            onClick={() => onCollapse(false)}
+            style={{ fontSize: 22, color: "red", cursor: "pointer" }}
+          />
+        ) : (
+          <MenuFoldOutlined
+            onClick={() => onCollapse(true)}
+            style={{ fontSize: 22, color: "red", cursor: "pointer" }}
+          />
+        )}
+      </div>
+      {/* Updated Menu with items prop */}
+      <Menu
+        mode="inline"
+        theme="light"
+        onClick={handleClick}
+        selectedKeys={[normalizedPath]} 
+        style={{
+          backgroundColor: "#fff",
+          color: "red",
+          fontWeight: "500",
+        }}
+        items={ROUTE_ITEMS.map(({ label, route, icon }) => ({
+          key: route, // Key matches the URL path
+          icon,
+          label,
+        }))}
+      />
+    </Sider>
   );
 }
