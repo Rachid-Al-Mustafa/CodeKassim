@@ -2,31 +2,33 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AdminRoutes } from "./AdminRoutes";
-import NotFound from "../pages/NotFound/NotFound";
+import { ROUTES } from "../constants/routes";
+import { AuthRoutes } from "./AuthRoutes";
 
-// A reusable function to render nested routes
-const renderRoutes = (route: any) => {
-  return (
-    <Route path={route.path} element={route.element}>
-      {route.children &&
-        route.children.map((child: any, index: number) => (
-          <Route key={index} path={child.path} element={child.element} />
-        ))}
-    </Route>
-  );
-};
+// Reusable function to render nested routes
+const renderRoutes = (route: any) => (
+  <Route path={route.path} element={route.element}>
+    {route.children &&
+      route.children.map((child: any, index: number) => (
+        <Route key={index} path={child.path} element={child.element} />
+      ))}
+  </Route>
+);
 
 export default function AppRoutes() {
   return (
     <Routes>
-      {/* Redirect root to dashboard */}
-      <Route path="/" element={<Navigate to={`/${AdminRoutes.path}`} replace />} />
+      {/* ✅ Redirect the root URL ("/") to the Login page */}
+      <Route path="/" element={<Navigate to={ROUTES.Auth} replace />} />
 
-      {/* Render Admin Routes */}
+      {/* ✅ Render Auth (Login) Routes */}
+      {renderRoutes(AuthRoutes)}
+
+      {/* ✅ Render Admin Routes */}
       {renderRoutes(AdminRoutes)}
 
-      {/* Catch-all route for non-existent paths */}
-      <Route path="*" element={<NotFound />} />
+      {/* 🚫 Redirect non-existent paths to the root */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
