@@ -7,9 +7,8 @@ import { Navigate } from "react-router-dom";
 import Catigories from "../pages/Catigories/";
 
 export const AdminRoutes = {
-  path: ROUTES.DASHBOARD,      // "/dashboard"
+  path: ROUTES.DASHBOARD,    
   element: React.createElement(AdminLayout),
-    // ✅ Correct JSX usage
   children: [
     Overview,   
     Catigories,

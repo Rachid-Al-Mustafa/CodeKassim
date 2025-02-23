@@ -6,4 +6,11 @@ export enum ROUTES {
   Auth = "auth",
   LOGIN = "login",
   NOT_FOUND = "*",
+  HOME = "",
+  ABOUT ="about",
+  CONTACT = "contact",
+  CHECKOUT = "checkout",
+  CART = "cart",
+  PRODUCTS = "products",
+  default= "",
 }
