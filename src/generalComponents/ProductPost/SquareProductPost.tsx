@@ -1,11 +1,10 @@
-// SqaureProductPost/SqaureProductPost.tsx
 import React from 'react';
 import { Card, Tag } from 'antd';
 import { PictureOutlined } from '@ant-design/icons';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
 import { ProductPostProps } from '../../modals/product.model';
 
-const SqaureProductPost: React.FC<ProductPostProps> = ({
+const SquareProductPost: React.FC<ProductPostProps> = ({
   name = 'Unnamed Product',
   description = 'No description available.',
   price = 0,
@@ -29,18 +28,32 @@ const SqaureProductPost: React.FC<ProductPostProps> = ({
           </div>
         ) : (
           <div className="w-full aspect-square flex items-center justify-center bg-gray-100 rounded-t-2xl">
-            <PictureOutlined className="text-6xl text-gray-400" />
+            <PictureOutlined className="text-4xl sm:text-6xl text-gray-400" />
           </div>
         )
       }
     >
-      <div className="flex flex-col gap-3 p-3">
-        <h2 className="text-lg font-semibold text-gray-800 leading-tight truncate">{name}</h2>
-        <Tag color="blue" className="text-sm font-medium w-fit">{category}</Tag>
-        <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">{description}</p>
+      <div className="flex flex-col gap-2 p-2 sm:p-3">
+        {/* Name */}
+        <h2 className="text-sm sm:text-lg font-semibold text-gray-800 leading-tight truncate">
+          {name}
+        </h2>
+
+        {/* Category */}
+        <Tag color="blue" className="text-xs sm:text-sm font-medium w-fit">
+          {category}
+        </Tag>
+
+        {/* Description */}
+        <p className="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
+          {description}
+        </p>
+
+        {/* Price and Add to Cart Button */}
         <div className="flex justify-between items-center mt-2">
-          <span className="text-lg font-bold text-green-600">
-            {currency}{price ? price.toFixed(2) : '0.00'}
+          <span className="text-sm sm:text-lg font-bold text-green-600">
+            {currency}
+            {price ? price.toFixed(2) : '0.00'}
           </span>
           <AddToCartButton disabled={!isAvailable} onClick={onAddToCart} />
         </div>
@@ -49,4 +62,4 @@ const SqaureProductPost: React.FC<ProductPostProps> = ({
   );
 };
 
-export default SqaureProductPost;
+export default SquareProductPost;
