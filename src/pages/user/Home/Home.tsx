@@ -1,26 +1,24 @@
 import React from "react";
 import { BannerSlide } from "../../../modals/banner.moder"; // Ensure this path is correct
-import { BannerSlider } from "../../../generalComponents";
+import { BannerSlider } from "../../../generalComponents"; // Ensure this import is correct
 
-// Import images using `import * as`
-import * as banner1 from "../../../assets/Images/Banner1.jpeg";
-import * as banner3 from "../../../assets/Images/Banner3.jpeg";
-import * as banner4 from "../../../assets/Images/Banner4.jpeg";
+// No need to import images when they are in the public folder
+// Reference them directly via the public URL path
 
-// Define slides for the banner slider using the imported images
+// Define slides with image URLs from the public folder
 const slides: BannerSlide[] = [
   {
-    imageUrl: banner1.default, // Access the `default` property
+    imageUrl: "/assets/Images/Banner1.jpeg", // Direct URL reference
     title: "Big Sale - Up to 50% Off!",
     alt: "Sale Banner",
   },
   {
-    imageUrl: banner3.default, // Access the `default` property
+    imageUrl: "/assets/Images/Banner3.jpeg",
     title: "Trendy Fashion Items",
     alt: "Fashion Banner",
   },
   {
-    imageUrl: banner4.default, // Access the `default` property
+    imageUrl: "/assets/Images/Banner4.jpeg",
     title: "Latest Electronics Deals",
     alt: "Electronics Banner",
   },
@@ -29,7 +27,7 @@ const slides: BannerSlide[] = [
 export default function Home() {
   return (
     <div>
-      {/* Render the BannerSlider component */}
+      {/* ✅ Render the BannerSlider component with slides */}
       <BannerSlider slides={slides} />
     </div>
   );
