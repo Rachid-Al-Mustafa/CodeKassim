@@ -8,5 +8,6 @@ export interface BannerSlide {
     slides: BannerSlide[];
     autoPlay?: boolean;
     interval?: number;
+    
   }
   
