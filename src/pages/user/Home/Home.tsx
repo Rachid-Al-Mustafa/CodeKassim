@@ -2,28 +2,11 @@ import React from "react";
 import { BannerSlide } from "../../../modals/banner.moder"; // Ensure this path is correct
 import { BannerSlider } from "../../../generalComponents";
 
-// Import images using `import * as`
-import * as banner1 from "../../../assets/Images/Banner1.jpeg";
-// import * as banner3 from "../../../assets/Images/Banner3.jpeg";
-// import * as banner4 from "../../../assets/Images/Banner4.jpeg";
 
-// Define slides for the banner slider using the imported images
+import CatigoriesPage from "./components/CatigoriesPage";
+
 const slides: BannerSlide[] = [
-  {
-    imageUrl: banner1.default, // Access the `default` property
-    title: "Big Sale - Up to 50% Off!",
-    alt: "Sale Banner",
-  },
-  // {
-  //   imageUrl: banner3.default, // Access the `default` property
-  //   title: "Trendy Fashion Items",
-  //   alt: "Fashion Banner",
-  // },
-  // {
-  //   imageUrl: banner4.default, // Access the `default` property
-  //   title: "Latest Electronics Deals",
-  //   alt: "Electronics Banner",
-  // },
+
 ];
 
 export default function Home() {
@@ -31,6 +14,7 @@ export default function Home() {
     <div>
       {/* Render the BannerSlider component */}
       <BannerSlider slides={slides} />
+      <CatigoriesPage/>
     </div>
   );
 }

@@ -42,7 +42,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({ slides, autoPlay = true, in
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full p-8">
       {/* ✅ Banner Slider */}
       <div className="relative w-full h-[35vh] sm:h-[30vh] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] overflow-hidden rounded-xl shadow-lg mb-8">
         <Slider {...settings}>
