@@ -44,7 +44,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({ slides, autoPlay = true, in
   return (
     <div className="w-full">
       {/* ✅ Banner Slider */}
-      <div className="relative w-full h-[50vh] sm:h-[25] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] overflow-hidden rounded-xl shadow-lg mb-8">
+      <div className="relative w-full h-[50vh] sm:h-[30vh] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] overflow-hidden rounded-xl shadow-lg mb-8">
         <Slider {...settings}>
           {slides.map((slide, index) => (
             <div key={index} className="relative font-sans">
