@@ -71,6 +71,7 @@ const Navbar = () => {
                     </motion.nav>
                 )}
             </AnimatePresence>
+            
         </header>
     );
 };
