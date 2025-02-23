@@ -1,5 +1,5 @@
 import React from "react";
-import { BannerSlide } from "../../../modals/banner.moder"; // Ensure this path is correct
+import { BannerSlide } from "../../../modals/banner.moder"; 
 import { BannerSlider } from "../../../generalComponents";
 
 
