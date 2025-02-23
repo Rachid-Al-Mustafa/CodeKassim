@@ -28,48 +28,74 @@ const BannerSlider: React.FC<BannerSliderProps> = ({ slides, autoPlay = true, in
     responsive: [
       {
         breakpoint: 1024,
-        settings: {
-          arrows: false,
-          dots: true,
-        },
+        settings: { arrows: false, dots: true },
       },
       {
         breakpoint: 768,
-        settings: {
-          arrows: false,
-          dots: true,
-        },
+        settings: { arrows: false, dots: true },
       },
       {
         breakpoint: 480,
-        settings: {
-          arrows: false,
-          dots: true,
-        },
+        settings: { arrows: false, dots: true },
       },
     ],
   };
 
   return (
-    <div className="relative w-full h-40 sm:h-52 md:h-64 lg:h-[350px] xl:h-[400px] overflow-hidden rounded-xl shadow-lg mb-8">
-      <Slider {...settings}>
-        {slides.map((slide, index) => (
-          <div key={index} className="relative">
-            <div className="w-full h-40 sm:h-52 md:h-64 lg:h-[350px] xl:h-[400px] flex justify-center items-center overflow-hidden rounded-xl">
+    <div className="w-full">
+      {/* ✅ Banner Slider */}
+      <div className="relative w-full h-[50vh] sm:h-[25] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] overflow-hidden rounded-xl shadow-lg mb-8">
+        <Slider {...settings}>
+          {slides.map((slide, index) => (
+            <div key={index} className="relative font-sans">
+              {/* Image */}
               <img
                 src={slide.imageUrl}
                 alt={slide.alt}
-                className="max-w-full max-h-full object-contain object-center rounded-xl shadow-sm"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                loading="lazy"
               />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 w-full h-full bg-black opacity-50 z-10"></div>
+
+              {/* Content */}
+              <div
+                className="
+                  min-h-[350px] 
+                  relative 
+                  z-50 
+                  h-full 
+                  flex 
+                  flex-col 
+                  justify-center 
+                  items-center 
+                  text-center 
+                  text-white 
+                  p-6
+                  sm:p-0
+                "
+              >
+                {/* Title */}
+                <h2
+                  className="
+                    text-4xl 
+                    sm:text-5xl 
+                    font-bold 
+                    leading-tight 
+                    sm:leading-snug 
+                    mb-4 
+                    px-4 
+                    sm:px-0
+                  "
+                >
+                  {slide.title}
+                </h2>
+              </div>
             </div>
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex justify-center items-end text-center px-4 pb-6">
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-white drop-shadow-lg leading-snug bg-black bg-opacity-50 px-3 py-1 rounded-md">
-                {slide.title}
-              </h2>
-            </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
