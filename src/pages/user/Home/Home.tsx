@@ -3,9 +3,9 @@ import { BannerSlide } from "../../../modals/banner.moder"; // Ensure this path 
 import { BannerSlider } from "../../../generalComponents";
 
 // Import images using `import * as`
-import * as banner1 from "../../../../public/assets/Images/Banner1.jpeg";
-import * as banner3 from "../../../../public/assets/Images/Banner3.jpeg";
-import * as banner4 from "../../../../public/assets/Images/Banner4.jpeg";
+import * as banner1 from "../../../assets/Images/Banner1.jpeg";
+import * as banner3 from "../../../assets/Images/Banner3.jpeg";
+import * as banner4 from "../../../assets/Images/Banner4.jpeg";
 
 // Define slides for the banner slider using the imported images
 const slides: BannerSlide[] = [
